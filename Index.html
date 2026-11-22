@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opiskelijaravintolat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sivun yläosa: logo ja kirjautumisnapit -->
+  <header class="site-header">
+    <h1 class="logo">Opiskelijaravintolat</h1>
+    <div class="user-bar">
+      <span id="user-name"></span>
+      <button type="button" id="auth-toggle">Kirjaudu / Rekisteröidy</button>
+      <button type="button" id="logout-button" hidden>Kirjaudu ulos</button>
+    </div>
+  </header>
+
+  <!-- Kirjautumis- ja rekisteröitymislomakkeet -->
+  <section id="auth-panel" class="auth-panel" hidden>
+    <form id="login-form">
+      <h2>Kirjaudu</h2>
+      <label for="login-username">Käyttäjätunnus</label>
+      <input type="text" id="login-username" name="username" required>
+      <label for="login-password">Salasana</label>
+      <input type="password" id="login-password" name="password" required>
+      <button type="submit">Kirjaudu</button>
+    </form>
+
+    <form id="register-form">
+      <h2>Rekisteröidy</h2>
+      <label for="register-username">Käyttäjätunnus</label>
+      <input type="text" id="register-username" name="username" required>
+      <label for="register-email">Sähköposti</label>
+      <input type="email" id="register-email" name="email" required>
+      <label for="register-password">Salasana</label>
+      <input type="password" id="register-password" name="password" required>
+      <button type="submit">Rekisteröidy</button>
+    </form>
+
+    <p id="auth-message" class="auth-message"></p>
+  </section>
+
+  <main class="layout">
+
+    <!-- Vasen palsta: ravintolalista -->
+    <section class="restaurants" aria-labelledby="restaurants-title">
+      <h2 id="restaurants-title">Ravintolat</h2>
+
+      <!-- Suodattimet -->
+      <form class="filters">
+        <label for="city-filter">Kaupunki</label>
+        <select id="city-filter">
+          <option value="">Kaikki</option>
+        </select>
+
+        <label for="company-filter">Palveluntarjoaja</label>
+        <select id="company-filter">
+          <option value="">Kaikki</option>
+          <option value="Sodexo">Sodexo</option>
+          <option value="Compass Group">Compass Group</option>
+        </select>
+      </form>
+
+      <p id="list-message"></p>
+      <ul id="restaurant-list" class="restaurant-list"></ul>
+    </section>
+
+    <!-- Oikea palsta: valitun ravintolan ruokalista -->
+    <section class="menu" aria-labelledby="menu-title">
+      <h2 id="menu-title">Valitse ravintola</h2>
+      <p id="menu-address" class="menu-address"></p>
+      <button type="button" id="favourite-button" class="favourite-button" hidden></button>
+
+      <!-- Valinta: päivän tai viikon ruokalista -->
+      <div class="menu-switch">
+        <button type="button" id="daily-button" class="active">Päivän ruokalista</button>
+        <button type="button" id="weekly-button">Viikon ruokalista</button>
+      </div>
+
+      <div id="menu-content">
+        <p>Valitse ravintola listasta nähdäksesi ruokalistan.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Opiskelijaravintolat</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
